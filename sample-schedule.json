@@ -1,0 +1,109 @@
+{
+  "events": [
+    {
+      "id": "evt_001",
+      "title": "Mathematics - Algebra",
+      "startDate": "2025-01-06T09:00:00",
+      "endDate": "2025-01-06T10:30:00",
+      "color": "blue",
+      "location": "Room 101",
+      "category": "Class",
+      "description": "Introduction to quadratic equations"
+    },
+    {
+      "id": "evt_002",
+      "title": "Physics Lab",
+      "startDate": "2025-01-06T11:00:00",
+      "endDate": "2025-01-06T12:30:00",
+      "color": "green",
+      "location": "Science Lab A",
+      "category": "Lab",
+      "description": "Experiment: Newton's Laws of Motion"
+    },
+    {
+      "id": "evt_003",
+      "title": "English Literature",
+      "startDate": "2025-01-06T14:00:00",
+      "endDate": "2025-01-06T15:30:00",
+      "color": "purple",
+      "location": "Room 205",
+      "category": "Class",
+      "description": "Shakespeare's Hamlet - Act 3 discussion"
+    },
+    {
+      "id": "evt_004",
+      "title": "Computer Science",
+      "startDate": "2025-01-07T09:00:00",
+      "endDate": "2025-01-07T10:30:00",
+      "color": "teal",
+      "location": "Computer Lab 1",
+      "category": "Class",
+      "description": "Introduction to Python programming"
+    },
+    {
+      "id": "evt_005",
+      "title": "History Exam",
+      "startDate": "2025-01-07T11:00:00",
+      "endDate": "2025-01-07T13:00:00",
+      "color": "red",
+      "location": "Exam Hall",
+      "category": "Exam",
+      "description": "World War II - Final examination"
+    },
+    {
+      "id": "evt_006",
+      "title": "Art Class",
+      "startDate": "2025-01-07T14:00:00",
+      "endDate": "2025-01-07T16:00:00",
+      "color": "pink",
+      "location": "Art Studio",
+      "category": "Class",
+      "description": "Watercolor painting techniques"
+    },
+    {
+      "id": "evt_007",
+      "title": "School Assembly",
+      "startDate": "2025-01-08T08:00:00",
+      "endDate": "2025-01-08T08:45:00",
+      "color": "yellow",
+      "location": "Main Auditorium",
+      "category": "Event",
+      "isAllDay": false
+    },
+    {
+      "id": "evt_008",
+      "title": "Chemistry Class",
+      "startDate": "2025-01-08T09:00:00",
+      "endDate": "2025-01-08T10:30:00",
+      "color": "orange",
+      "location": "Chemistry Lab",
+      "category": "Class",
+      "description": "Organic chemistry - Hydrocarbons"
+    },
+    {
+      "id": "evt_009",
+      "title": "Sports Day",
+      "startDate": "2025-01-10T00:00:00",
+      "endDate": "2025-01-10T23:59:59",
+      "color": "green",
+      "location": "School Grounds",
+      "category": "Event",
+      "isAllDay": true,
+      "description": "Annual sports day event - All classes"
+    },
+    {
+      "id": "evt_010",
+      "title": "Parent-Teacher Meeting",
+      "startDate": "2025-01-15T16:00:00",
+      "endDate": "2025-01-15T19:00:00",
+      "color": "purple",
+      "location": "Conference Room",
+      "category": "Meeting",
+      "description": "Quarterly progress discussion"
+    }
+  ],
+  "metadata": {
+    "source": "School Schedule System",
+    "version": "1.0.0"
+  }
+}
