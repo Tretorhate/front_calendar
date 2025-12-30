@@ -50,7 +50,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
   onMenuClick,
   isSidebarOpen,
 }) => {
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -77,11 +77,10 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     }
   };
 
-  const currentTheme =
-    theme === 'system' ? resolvedTheme ?? 'light' : theme ?? 'light';
+  const isDark = theme === 'dark';
 
   const toggleTheme = () => {
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    setTheme(isDark ? 'light' : 'dark');
   };
 
   const getDisplayDateRange = () => {
@@ -191,13 +190,9 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
             whileTap={{ scale: 0.95 }}
             onClick={toggleTheme}
             className='p-2 sm:p-2.5 rounded-lg bg-secondary hover:bg-muted transition-colors'
-            title={
-              currentTheme === 'dark'
-                ? 'Switch to light mode'
-                : 'Switch to dark mode'
-            }
+            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {currentTheme === 'dark' ? (
+            {isDark ? (
               <Sun className='w-4 h-4 sm:w-5 sm:h-5 text-yellow-500' />
             ) : (
               <Moon className='w-4 h-4 sm:w-5 sm:h-5 text-slate-700' />
