@@ -77,7 +77,8 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = ({
     }
   };
 
-  const currentTheme = theme === 'system' ? resolvedTheme : theme;
+  const currentTheme =
+    theme === 'system' ? resolvedTheme ?? 'light' : theme ?? 'light';
 
   const toggleTheme = () => {
     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
