@@ -177,19 +177,10 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
   "events": [
     {
       "title": "Math Class",
-      "startDate": "2025-01-15T09:00:00",
-      "endDate": "2025-01-15T10:30:00",
+      "startDate": "2025-12-30T09:00:00",
+      "endDate": "2025-12-30T10:30:00",
       "color": "blue",
-      "location": "Room 101",
-      "category": "Class"
-    },
-    {
-      "title": "Science Lab",
-      "startDate": "2025-01-15T11:00:00",
-      "endDate": "2025-01-15T12:30:00",
-      "color": "green",
-      "location": "Lab A",
-      "category": "Lab"
+      "location": "Room 101"
     }
   ]
 }`;
@@ -197,14 +188,14 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className='fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8'>
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className='fixed inset-0 bg-black/60 backdrop-blur-sm z-50'
+            className='absolute inset-0 bg-black/60 backdrop-blur-sm'
           />
 
           {/* Modal */}
@@ -212,28 +203,28 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl bg-card rounded-2xl shadow-2xl z-50 overflow-hidden max-h-[90vh] flex flex-col'
+            className='relative w-full max-w-[95vw] sm:max-w-lg md:max-w-xl lg:max-w-2xl bg-card rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] sm:max-h-[90vh] flex flex-col'
           >
             {/* Header */}
-            <div className='flex items-center justify-between px-6 py-4 border-b border-border shrink-0'>
-              <div className='flex items-center gap-3'>
-                <FileJson className='w-5 h-5 text-primary' />
-                <h2 className='text-lg font-semibold text-foreground'>
-                  Import Schedule from JSON
+            <div className='flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-border shrink-0'>
+              <div className='flex items-center gap-2 sm:gap-3'>
+                <FileJson className='w-4 h-4 sm:w-5 sm:h-5 text-primary' />
+                <h2 className='text-base sm:text-lg font-semibold text-foreground'>
+                  Import Schedule
                 </h2>
               </div>
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={handleClose}
-                className='p-2 rounded-lg hover:bg-muted transition-colors'
+                className='p-1.5 sm:p-2 rounded-lg hover:bg-muted transition-colors'
               >
-                <X className='w-5 h-5 text-muted-foreground' />
+                <X className='w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground' />
               </motion.button>
             </div>
 
             {/* Content */}
-            <div className='p-6 space-y-4 overflow-y-auto flex-1'>
+            <div className='p-4 sm:p-6 space-y-3 sm:space-y-4 overflow-y-auto flex-1'>
               {/* File Upload */}
               <div>
                 <input
@@ -247,23 +238,23 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   onClick={() => fileInputRef.current?.click()}
-                  className='w-full flex items-center justify-center gap-3 px-4 py-6 border-2 border-dashed border-border rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-colors'
+                  className='w-full flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-4 py-4 sm:py-6 border-2 border-dashed border-border rounded-lg sm:rounded-xl hover:border-primary/50 hover:bg-primary/5 transition-colors'
                 >
-                  <Upload className='w-6 h-6 text-muted-foreground' />
+                  <Upload className='w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground' />
                   <div className='text-left'>
-                    <div className='font-medium text-foreground'>
+                    <div className='font-medium text-sm sm:text-base text-foreground'>
                       Upload JSON File
                     </div>
-                    <div className='text-sm text-muted-foreground'>
+                    <div className='text-xs sm:text-sm text-muted-foreground'>
                       Click to select a .json file
                     </div>
                   </div>
                 </motion.button>
               </div>
 
-              <div className='flex items-center gap-3'>
+              <div className='flex items-center gap-2 sm:gap-3'>
                 <div className='flex-1 h-px bg-border' />
-                <span className='text-xs text-muted-foreground'>
+                <span className='text-[10px] sm:text-xs text-muted-foreground'>
                   or paste JSON
                 </span>
                 <div className='flex-1 h-px bg-border' />
@@ -279,8 +270,7 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
                     setError('');
                   }}
                   placeholder={sampleJson}
-                  rows={12}
-                  className='w-full px-4 py-3 bg-secondary rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary font-mono text-sm resize-none'
+                  className='w-full px-3 sm:px-4 py-2 sm:py-3 bg-secondary rounded-lg sm:rounded-xl text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary font-mono text-xs sm:text-sm resize-none min-h-[150px] sm:min-h-[200px] md:min-h-[280px]'
                 />
               </div>
 
@@ -291,10 +281,10 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className='flex items-center gap-2 px-4 py-3 bg-destructive/10 text-destructive rounded-lg'
+                    className='flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-destructive/10 text-destructive rounded-lg'
                   >
-                    <AlertCircle className='w-4 h-4 shrink-0' />
-                    <span className='text-sm'>{error}</span>
+                    <AlertCircle className='w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0' />
+                    <span className='text-xs sm:text-sm'>{error}</span>
                   </motion.div>
                 )}
                 {status === 'success' && (
@@ -302,10 +292,10 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className='flex items-center gap-2 px-4 py-3 bg-green-500/10 text-green-400 rounded-lg'
+                    className='flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 bg-green-500/10 text-green-400 rounded-lg'
                   >
-                    <CheckCircle2 className='w-4 h-4 shrink-0' />
-                    <span className='text-sm'>
+                    <CheckCircle2 className='w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0' />
+                    <span className='text-xs sm:text-sm'>
                       Successfully parsed {parsedCount} event
                       {parsedCount !== 1 ? 's' : ''}!
                     </span>
@@ -314,34 +304,34 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
               </AnimatePresence>
 
               {/* Sample Format Info */}
-              <div className='p-4 bg-muted/30 rounded-xl'>
-                <h4 className='text-sm font-medium text-foreground mb-2'>
+              <div className='p-3 sm:p-4 bg-muted/30 rounded-lg sm:rounded-xl'>
+                <h4 className='text-xs sm:text-sm font-medium text-foreground mb-1.5 sm:mb-2'>
                   Supported JSON Format
                 </h4>
-                <ul className='text-xs text-muted-foreground space-y-1'>
+                <ul className='text-[10px] sm:text-xs text-muted-foreground space-y-0.5 sm:space-y-1'>
                   <li>
                     • Array of events or object with &quot;events&quot; property
                   </li>
                   <li>• Required fields: title, startDate (or date/start)</li>
                   <li>
-                    • Optional fields: endDate, color, location, description,
-                    category, isAllDay
+                    • Optional: endDate, color, location, description, category,
+                    isAllDay
                   </li>
                   <li>
                     • Date format: ISO 8601 (e.g.,
-                    &quot;2025-01-15T09:00:00&quot;)
+                    &quot;2025-12-30T09:00:00&quot;)
                   </li>
                 </ul>
               </div>
             </div>
 
             {/* Footer */}
-            <div className='flex items-center justify-end gap-3 px-6 py-4 border-t border-border shrink-0'>
+            <div className='flex items-center justify-end gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-border shrink-0'>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleClose}
-                className='px-4 py-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors'
+                className='px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors'
               >
                 Cancel
               </motion.button>
@@ -351,7 +341,7 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
                 onClick={handleImport}
                 disabled={status === 'parsing' || status === 'success'}
                 className={cn(
-                  'px-6 py-2 bg-primary text-primary-foreground rounded-lg font-medium transition-all',
+                  'px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm bg-primary text-primary-foreground rounded-lg font-medium transition-all',
                   status === 'parsing' && 'opacity-50 cursor-not-allowed',
                   status === 'success' && 'bg-green-500'
                 )}
@@ -364,7 +354,7 @@ export const JsonImportModal: React.FC<JsonImportModalProps> = ({
               </motion.button>
             </div>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );

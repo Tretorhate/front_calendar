@@ -24,7 +24,10 @@ export const EventCard: React.FC<EventCardProps> = ({
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
-        onClick={onClick}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick?.();
+        }}
         className={cn(
           "w-full text-left px-2 py-1 rounded text-xs font-medium truncate border-l-2 transition-colors",
           colors.bg,
@@ -43,9 +46,12 @@ export const EventCard: React.FC<EventCardProps> = ({
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02, y: -2 }}
       whileTap={{ scale: 0.98 }}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick?.();
+      }}
       className={cn(
-        "w-full text-left p-3 rounded-lg border-l-4 transition-all cursor-pointer",
+        "w-full text-left p-3 rounded-lg border-l-4 transition-all cursor-pointer relative",
         colors.bg,
         colors.border,
         "hover:shadow-lg hover:shadow-black/20"
@@ -65,16 +71,16 @@ export const EventCard: React.FC<EventCardProps> = ({
             </p>
           )}
         </div>
-        {event.category && (
-          <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-            {event.category}
-          </span>
-        )}
       </div>
       {event.description && !compact && (
         <p className="text-xs text-muted-foreground mt-2 line-clamp-2">
           {event.description}
         </p>
+      )}
+      {event.category && (
+        <span className="absolute bottom-2 right-2 text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+          {event.category}
+        </span>
       )}
     </motion.button>
   );

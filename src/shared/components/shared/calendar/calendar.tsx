@@ -42,6 +42,7 @@ export const Calendar: React.FC<CalendarProps> = ({ className }) => {
 
   const [isImportModalOpen, setIsImportModalOpen] = React.useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
   const [defaultEventDate, setDefaultEventDate] = React.useState<
     Date | undefined
   >(undefined);
@@ -138,6 +139,10 @@ export const Calendar: React.FC<CalendarProps> = ({ className }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const toggleSidebarCollapse = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
   return (
     <div
       className={`h-screen flex flex-col bg-background overflow-hidden ${
@@ -186,6 +191,8 @@ export const Calendar: React.FC<CalendarProps> = ({ className }) => {
           onClearAll={handleClearAll}
           isOpen={isSidebarOpen}
           onClose={handleCloseSidebar}
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={toggleSidebarCollapse}
         />
 
         {/* Calendar Views */}
